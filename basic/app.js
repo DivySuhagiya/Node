@@ -11,6 +11,7 @@ const cartRoutes = require("./routes/CartRoutes");
 const uploadRoutes = require("./routes/UploadRoutes");
 const songRoutes = require("./routes/SongRoutes");
 const playlistRoutes = require("./routes/PlaylistRoutes");
+require('dotenv').config()
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,13 +24,13 @@ app.use("/upload", uploadRoutes);
 app.use("/song", songRoutes);
 app.use("/playlist", playlistRoutes);
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("server is running on port", PORT);
 });
 
 mongoose.connect(
-  "mongodb://localhost:27017/Nodejs",
+  "mongodb+srv://root:root@cluster0.8bxenbb.mongodb.net/learning?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
